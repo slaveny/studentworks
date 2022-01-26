@@ -1,0 +1,37 @@
+package decoder2;
+
+public class Main {
+	public static void main(String[] args) {
+	if(args.length!=0) {
+		String words[];
+		String sourceText, processedText;
+	    sourceText = args[0];
+	    processedText = sourceText.replace('р','х' );
+	    words = processedText.split("_");
+	    String S="";
+	    for(int i=0;i<words[2].length();i++) 
+	    	S+='*';
+	    words[2]=S;
+	    StringBuilder builder = new StringBuilder();
+	    builder.append(words[0]);
+	    builder.reverse();
+	    words[0]=builder.toString();
+	    words[1]=words[1].toUpperCase();
+	    String cachedWord = words[5];
+	    words[5]=words[4];
+	    words[4]=cachedWord;
+	    int p=words[4].length();S="";
+	    for(int k=0;k<p;k++) 
+	    	S+=cachedWord.charAt((500*p+k-8)%p);
+	    words[4]=S;
+	    for(int k=0;k<words.length;k++)if(k%2==0)
+	    	words[k]=words[k].toUpperCase();
+	    builder = new StringBuilder();
+	    if(words.length>2)for (int i = 0; i < words.length-1; i++) {
+	        builder.append(words[i]).append("_");
+	    }
+	    builder.append(words[words.length-1]);
+	    System.out.println(builder.toString());
+	}
+}
+}
