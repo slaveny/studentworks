@@ -1,0 +1,47 @@
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		if (args.length < 2) {
+            System.out.println("Необходимо как минимум 2 аргумента - X и Y!");
+        }
+		else {
+		double x = Double.parseDouble(args[0]);
+        double y = Double.parseDouble(args[1]);
+        boolean conditionOne = y < x + 5;
+        boolean conditionC1 = 16 > Math.pow(x-7,2)+ Math.pow(y-6,2);
+        boolean conditionC2 = 9 > Math.pow(x-4,2)+ Math.pow(y-3,2);
+        boolean conditionThree = (x > 4) && (x < 9) && (y > 3) && (y < 9);
+        int[][][][] zones = new int[2][2][2][2];
+        /*
+         * 
+Зона 1: снаружи окружности (1), снаружи окружности (2), снизу линии (3), снаружи прямоугольника (4)
+Зона 2: снаружи окружности (1), внутри окружности (2), снизу линии (3), снаружи прямоугольника (4)
+Зона 3: внутри окружности (1), внутри окружности (2), снизу линии (3), снаружи прямоугольника (4)
+Зона 4: внутри окружности (1), снаружи окружности (2), снизу линии (3), снаружи прямоугольника (4)
+Зона 5: внутри окружности (1), внутри окружности (2), снизу линии (3), внутри прямоугольника (4)
+Зона 6: внутри окружности (1), снаружи окружности (2), снизу линии (3), внутри прямоугольника (4)
+Зона 7: снаружи окружности (1), снаружи окружности (2), сверху линии (3), снаружи прямоугольника (4)
+         */
+        zones[1][0][0][0]=1;
+        zones[1][0][1][0]=2;
+        zones[1][1][1][0]=3;
+        zones[1][1][0][0]=4;
+        zones[1][1][1][1]=5;
+        zones[1][1][0][1]=6;
+        zones[0][0][0][0]=7;
+       /*if(conditionOne)
+        	System.out.println(1);
+        	else System.out.println(0);
+        if(conditionTwo)
+        	System.out.println(1);
+        	else System.out.println(0);
+        if(conditionThree)
+        	System.out.println(1);
+        	else System.out.println(0);*/
+        System.out.println(
+        	    zones[conditionOne ? 1 : 0][conditionC1 ? 1 : 0][conditionC2 ? 1 : 0][conditionThree ? 1: 0]
+        	);
+        }
+	}
+}
